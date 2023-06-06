@@ -1,6 +1,6 @@
 <script>
 import AppHeader from './components/AppHeader.vue';
-// import CardsList from './components/CardsList.vue';
+import { store } from './store';
 import CardsListContainer from './components/CardsListContainer.vue';
 import axios from "axios";
 
@@ -8,7 +8,25 @@ export default {
   components: {
     AppHeader,
     CardsListContainer,
-    // CardsList
+  },
+  data() {
+    return {
+      store,
+    }
+  },
+  methods: {
+    getCards() {
+      axios.get(store.apiURL)
+        .then(result => {
+          store.cardsList = result.data.data
+        })
+        .catch(err => {
+          console.log(err);
+        })
+    }
+  },
+  created() {
+    this.getCards()
   }
 };
 
@@ -16,7 +34,6 @@ export default {
 
 <template>
   <AppHeader message="Yu-Gi-Oh Api" />
-  <!-- <CardsList /> -->
   <CardsListContainer />
 </template>
 
