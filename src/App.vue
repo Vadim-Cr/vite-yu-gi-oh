@@ -1,12 +1,14 @@
 <script>
 import AppHeader from './components/AppHeader.vue';
-import CardsList from './components/CardsList.vue';
+// import CardsList from './components/CardsList.vue';
+import CardsListContainer from './components/CardsListContainer.vue';
 import axios from "axios";
 
 export default {
   components: {
     AppHeader,
-    CardsList
+    CardsListContainer,
+    // CardsList
   }
 };
 
@@ -14,7 +16,8 @@ export default {
 
 <template>
   <AppHeader message="Yu-Gi-Oh Api" />
-  <CardsList />
+  <!-- <CardsList /> -->
+  <CardsListContainer />
 </template>
 
 <style lang="scss">

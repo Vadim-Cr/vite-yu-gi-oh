@@ -1,0 +1,23 @@
+// * FLEX display center
+
+@mixin center {
+    display: flex;
+    align-items: center;
+}
+
+@mixin center_between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@mixin widthCenter {
+    width: 70%;
+    margin: auto;
+}
+
+@mixin textCardMain {
+    color: white;
+    margin-top: 0.25rem;
+    font-weight: 600;
+}

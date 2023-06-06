@@ -13,9 +13,14 @@ export default {
 </template>
 
 <style scoped lang="scss">
-h1 {
-    background-color: white;
-    padding: 2rem;
-    height: 5rem;
+header {
+    padding-bottom: 2rem;
+
+    h1 {
+        background-color: white;
+        padding: 2rem;
+
+
+    }
 }
 </style>
