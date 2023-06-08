@@ -23,10 +23,10 @@ export default {
 
 .cardContainer {
     background-color: $primary;
-    min-height: 10rem;
+    max-height: 20rem;
     max-width: 25rem;
-    margin: 1rem;
-    padding: 2rem;
+    margin: 0.25rem;
+    padding: 0.25rem;
     @include center;
     flex-direction: column;
 
@@ -36,7 +36,7 @@ export default {
     }
 
     img {
-        max-height: 10rem;
+        max-width: 10rem;
         object-fit: contain;
     }
 }

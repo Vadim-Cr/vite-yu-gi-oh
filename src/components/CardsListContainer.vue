@@ -2,21 +2,42 @@
 
 import { store } from '../store';
 import CardsList from './CardsList.vue';
+import SelectOptions from './SelectOptions.vue';
+import axios from "axios";
 
 export default {
     name: "CardsListContainer",
     components: {
-        CardsList
+        CardsList,
+        SelectOptions
     },
     data() {
         return {
-            store: store // Assign the imported store to the local data property
+            store: store, // Assign the imported store to the local data property
         }
     },
-    mounted() {
-        console.log(this.store.cardsList);
-    }
+    methods: {
+        getCards(selectedOption) {
+            let myUrl = `${store.apiURL}?&num=50&offset=0`
 
+            if (selectedOption !== "") {
+                myUrl += `&${store.apiTypeParameter}=${selectedOption}`
+            }
+
+            axios.get(myUrl)
+                .then(result => {
+                    store.cardsList = result.data.data
+                    store.loading = false;
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+        }
+
+    },
+    created() {
+        this.getCards()
+    }
 }
 
 </script>
@@ -25,13 +46,14 @@ export default {
 <template>
     <!-- * card yu gi oh esempio  -->
     <div class="listContainer">
+        <SelectOptions @selected="getCards" />
         <div class="listTitle">
             <h2>Sono state trovate {{ store.cardsList.length }} carte</h2>
         </div>
         <div class="listSubContainer">
             <CardsList v-for="ygoCards in store.cardsList" :key="ygoCards.id" :card="ygoCards" />
-
         </div>
+
     </div>
 </template>
 

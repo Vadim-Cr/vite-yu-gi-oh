@@ -2,7 +2,7 @@
 import AppHeader from './components/AppHeader.vue';
 import { store } from './store';
 import CardsListContainer from './components/CardsListContainer.vue';
-import axios from "axios";
+
 
 export default {
   components: {
@@ -14,20 +14,7 @@ export default {
       store,
     }
   },
-  methods: {
-    getCards() {
-      axios.get(store.apiURL)
-        .then(result => {
-          store.cardsList = result.data.data
-        })
-        .catch(err => {
-          console.log(err);
-        })
-    }
-  },
-  created() {
-    this.getCards()
-  }
+
 };
 
 </script>
